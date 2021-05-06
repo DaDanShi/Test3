@@ -1,0 +1,39 @@
+# 配置 tomcat 端口号
+server:
+  port: 8086
+
+spring:
+  profiles:
+    # 外置 jdbc、redis和 mail配置文件
+    active: jdbc,redis,mail
+  # 关闭thymeleaf页面缓存
+  thymeleaf:
+    cache: false
+  # 配置国际化资源文件
+  messages:
+    basename: i18n.logo
+  # 显示出Hibernate查询语句的绑定参数值
+  jpa:
+    show-sql: true
+
+# MyBatis配置
+mybatis:
+  configuration:
+    #开启驼峰命名匹配映射
+    map-underscore-to-camel-case: true
+  #配置MyBatis的xml映射文件路径
+  mapper-locations: classpath:mapper/*.xml
+  #配置XML映射文件中指定的实体类别名路径
+  type-aliases-package: com.example.demo.model.domain
+
+# pagehelper分页设置
+pagehelper:
+  helper-dialect: mysql
+  reasonable: true
+  support-methods-arguments: true
+  params: count=countSql
+
+# 浏览器cookie相关设置
+COOKIE:
+  # 设置cookie默认时长为30分钟
+  VALIDITY: 1800
